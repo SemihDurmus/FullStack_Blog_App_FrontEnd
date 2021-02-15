@@ -68,6 +68,7 @@ function Home() {
     categoryDisplay,
     selectedOption,
     setSelectedOption,
+    userId,
   } = useContext(Context);
 
   const [postDisplayList, setPostDisplayList] = useState([]);
@@ -186,10 +187,12 @@ function Home() {
       }}
     >
       <Navbar />
-      <div className="flyingButton" onClick={() => null}>
-        <ControlPointIcon fontSize="large" />
-        <div className="createPostContainer">Create a Post</div>
-      </div>
+      {userId && (
+        <div className="flyingButton" onClick={() => null}>
+          <ControlPointIcon fontSize="large" />
+          <div className="createPostContainer">Create a Post</div>
+        </div>
+      )}
       <div
         style={{
           ...searchContainerStyle,
