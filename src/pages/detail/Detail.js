@@ -299,7 +299,7 @@ const Detail = () => {
                         padding: "6px",
                         display: "flex",
                         justifyContent: "center",
-                        alignItems: "center",
+                        alignItems: "top",
                       }}
                     >
                       <Avatar
