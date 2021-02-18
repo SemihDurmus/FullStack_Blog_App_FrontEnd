@@ -49,9 +49,6 @@ const useStyles = makeStyles({
   image: {
     padding: 3,
   },
-  authorGroup: {
-    right: "50px",
-  },
   avatar: {
     marginBottom: "0.35em",
   },
@@ -74,7 +71,7 @@ const Detail = () => {
     try {
       const token = localStorage.getItem("token");
       const result = await axios.get(
-        `https://fs-blog-backend.herokuapp.com/api/${slug}/post-detail/`,
+        `https://fsblog-backend.herokuapp.com/api/${slug}/post-detail/`,
         {
           headers: {
             Accept: "application/json",
@@ -115,7 +112,7 @@ const Detail = () => {
   const handleLikeClick = async () => {
     try {
       const result = await axios.post(
-        `https://fs-blog-backend.herokuapp.com/api/${slug}/like/`,
+        `https://fsblog-backend.herokuapp.com/api/${slug}/like/`,
         null,
         {
           headers: {
@@ -165,7 +162,7 @@ const Detail = () => {
     if (key?.charCode === 13) {
       try {
         const result = await axios.post(
-          `https://fs-blog-backend.herokuapp.com/api/${slug}/comment-create/`,
+          `https://fsblog-backend.herokuapp.com/api/${slug}/comment-create/`,
           { content: comment },
           {
             headers: {
@@ -190,7 +187,7 @@ const Detail = () => {
   const handleCommentSendWithClick = async () => {
     try {
       const result = await axios.post(
-        `https://fs-blog-backend.herokuapp.com/api/${slug}/comment-create/`,
+        `https://fsblog-backend.herokuapp.com/api/${slug}/comment-create/`,
         { content: comment },
         {
           headers: {
@@ -281,6 +278,7 @@ const Detail = () => {
           >
             Comments
           </Typography>
+          {/* comment-box---------------------- */}
           {comments?.length
             ? comments.map((item, idx) => {
                 return (
@@ -292,24 +290,57 @@ const Detail = () => {
                       padding: "5px",
                       paddingLeft: "12px",
                       borderRadius: "6px",
+                      display: "flex",
+                      boxShadow: "2px 2px 5px #636e72",
                     }}
                   >
-                    <Typography
+                    <div
                       style={{
-                        fontSize: "14px",
-                        color: "#079992",
-                        fontWeight: "bold",
+                        padding: "6px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
                       }}
                     >
-                      {item?.commenter_name}
-                    </Typography>
-                    <Typography
+                      <Avatar
+                        alt="Commenter Avatar"
+                        src={item?.commenter_avatar}
+                        className={classes.small}
+                      />
+                    </div>
+                    <div
                       style={{
-                        fontSize: "14px",
+                        paddingLeft: "12px",
+                        paddingRight: "8px",
+                        width: "100%",
                       }}
                     >
-                      {item?.content}
-                    </Typography>
+                      <Typography
+                        style={{
+                          fontSize: "14px",
+                          color: "#079992",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {item?.commenter_name}
+                      </Typography>
+                      <Typography
+                        style={{
+                          fontSize: "14px",
+                        }}
+                      >
+                        {item?.content}
+                      </Typography>
+                      <Typography
+                        style={{
+                          textAlign: "right",
+                          fontSize: "12px",
+                          color: "#3c6382",
+                        }}
+                      >
+                        {moment(item?.time_stamp).format("MMMM Do YYYY, h:mm")}
+                      </Typography>
+                    </div>
                   </div>
                 );
               })
