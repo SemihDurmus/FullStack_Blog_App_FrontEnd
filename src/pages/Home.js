@@ -58,6 +58,14 @@ const paginationContainerStyle = {
 const buttonStyle = {
   padding: "10px",
   outline: "none",
+  border: "0",
+  borderRadius: "20px",
+  cursor: "pointer",
+  width: "16rem",
+  fontSize: "1rem",
+  fontWeight: "bold",
+  backgroundColor: "#83acf1",
+  color: "#fff",
 };
 
 // ---------MAIN FUNCTION----------
@@ -87,7 +95,7 @@ function Home() {
 
   // --------fetch data------------
   const fetchData = async (
-    postListURL = "https://fsblog-backend.herokuapp.com/api/post-list/"
+    postListURL = "https://fs-blog-backend.herokuapp.com/api/post-list/"
   ) => {
     try {
       const result = await axios.get(postListURL);
@@ -243,7 +251,7 @@ function Home() {
                     }}
                     style={buttonStyle}
                   >
-                    Back to HomePage
+                    Back to Home Page
                   </button>
                 </Box>
               </div>

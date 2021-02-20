@@ -18,7 +18,7 @@ export default function Passwordreset() {
     try {
       console.log(email);
       const result = await axios.post(
-        "https://fsblog-backend.herokuapp.com/auth/password/reset/",
+        "https://fs-blog-backend.herokuapp.com/auth/password/reset/",
         { email: email }
         // {
         //   headers: {
@@ -40,10 +40,30 @@ export default function Passwordreset() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+      }}
+    >
+      <h2>Password Reset</h2>
       <label>Enter your email</label>
 
-      <input type="email" ref={inputRef} onKeyDown={handleKeyDown} />
+      <input
+        type="email"
+        ref={inputRef}
+        onKeyDown={handleKeyDown}
+        style={{
+          width: "200px",
+          backgroundColor: "#ffda79",
+          borderRadius: "10px",
+          textAlign: "center",
+          padding: "5px",
+        }}
+      />
+
       <button
         onClick={() => {
           fetchData(inputRef?.current?.value);
