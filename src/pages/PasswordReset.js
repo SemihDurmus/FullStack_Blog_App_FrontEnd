@@ -85,14 +85,16 @@ export default function Passwordreset() {
             >
               Send
             </button>
-            {error.length ? (
-              <p style={{ color: "red" }}>
+            {error?.length ? (
+              <p style={{ color: "red", marginTop: "1rem" }}>
                 This email is not registered to any user
               </p>
             ) : null}
           </>
         ) : (
-          <p>Reset email has been sent to your email account.</p>
+          <p style={{ fontWeight: "bold", color: "#009432" }}>
+            ✅ A password reset email has been sent to your email account.
+          </p>
         )}
       </div>
     </div>

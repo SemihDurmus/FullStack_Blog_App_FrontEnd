@@ -7,6 +7,7 @@ import Contact from "../pages/Contact";
 import ProfilePage from "../pages/profile/Profile";
 import Detail from "../pages/detail/Detail";
 import PasswordReset from "../pages/PasswordReset";
+import PasswordResetConfirm from "../pages/PasswordResetConfirm";
 import PrivateRouter from "./PrivateRouter";
 
 export default function Router() {
@@ -19,9 +20,16 @@ export default function Router() {
           <Route path="/about" component={About} exact />
           <Route path="/contact" component={Contact} exact />
           <Route path="/password-reset" component={PasswordReset} exact />
+          <Route
+            path="/password-reset/:uidb64/:token"
+            component={PasswordResetConfirm}
+            exact
+          />
           <PrivateRouter path="/profile" component={ProfilePage} exact />
           <PrivateRouter path="/detail/:slug" component={Detail} exact />
-
+          {/* 
+            <Route path="/detail/:slug" component={PostDetail} exact />
+             */}
           {/* <Route path="/create" component={PostPage} exact/>
               <Route path="/edit/:slug" component={CustomPostPage} exact/> */}
         </Switch>
