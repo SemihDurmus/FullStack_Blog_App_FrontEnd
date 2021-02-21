@@ -240,7 +240,9 @@ function Home() {
             ) : (
               <div>
                 {keyword?.length ? (
-                  <p>"{keyword}" is not available in bloglist titles.</p>
+                  <p style={{ textAlign: "center", fontWeight: "bold" }}>
+                    "{keyword}" is not available in bloglist titles.
+                  </p>
                 ) : null}
                 <Box p={9}>
                   <button

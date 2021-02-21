@@ -28,8 +28,9 @@ const useStyles = makeStyles({
     minWidth: "300px",
     maxWidth: "60vw",
     margin: "20px auto",
-    cursor: "default",
+    pointerEvents: "none",
   },
+
   media: {
     height: 300,
     cursor: "default",
@@ -41,7 +42,6 @@ const useStyles = makeStyles({
     fontSize: "1.8rem",
     fontWeight: "bold",
     margin: "1.6rem auto",
-    cursor: "default",
   },
   module: {
     fontSize: "1rem",
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
   },
   image: {
     padding: 3,
-    cursor: "default",
+    pointerEvents: "all",
   },
   avatar: {
     marginBottom: "0.35em",

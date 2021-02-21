@@ -26,9 +26,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "26px",
     cursor: "pointer",
   },
-  root2: {
-    cursor: "default",
-  },
+
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
