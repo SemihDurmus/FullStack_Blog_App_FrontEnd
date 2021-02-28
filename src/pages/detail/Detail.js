@@ -168,6 +168,37 @@ const Detail = () => {
   //     }
   //   };
 
+  //---------------Publish Post----------------------
+  const handlePostMakePublish = async () => {
+    try {
+      const result = await axios.put(
+        `https://fs-blog-backend.herokuapp.com/api/${slug}/edit/`,
+        {
+          status: "published",
+          author_avatar: author,
+          content,
+          image_URL,
+          title,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Token " + localStorage.getItem("token"),
+          },
+        }
+      );
+      fetchData();
+    } catch ({ response }) {
+      if (response) {
+        console.log(response?.data);
+      } else {
+        console.log("Something went wrong!");
+      }
+    }
+  };
+
+  //--------------Comment Change---------------------
   const handleCommentChange = (e) => {
     setComment(e.target.value);
   };
@@ -527,6 +558,19 @@ const Detail = () => {
                 color="primary"
               >
                 Edit post
+              </Button>
+            </Box>
+          </>
+        )}
+        {author == userId && status == "draft" && (
+          <>
+            <Box p={1}>
+              <Button
+                onClick={() => handlePostMakePublish()}
+                variant="contained"
+                color="primary"
+              >
+                Publish Your Post
               </Button>
             </Box>
           </>
