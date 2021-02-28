@@ -1,4 +1,4 @@
-import { Fragment, useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext, useEffect, useMemo } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -6,6 +6,8 @@ import axios from "axios";
 import moment from "moment";
 
 import { Context } from "../../context/Context";
+import EditComment from "../../components/editComment/EditComment";
+import DeleteComment from "../../components/deleteComment/DeleteComment";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -21,7 +23,11 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
+import DeleteForever from "@material-ui/icons/DeleteForever";
+import Edit from "@material-ui/icons/Edit";
 import Avatar from "@material-ui/core/Avatar";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
   root: {
@@ -67,6 +73,10 @@ const Detail = () => {
   let { slug } = useParams();
   const [item, setItem] = useState([]);
   const [comment, setComment] = useState("");
+  const [deleteComment, setDeleteComment] = useState(false);
+  const [editComment, setEditComment] = useState(false);
+  const [editCommentContent, setEditCommentContent] = useState([]);
+  const [changedContent, setChangedContent] = useState("");
   const classes = useStyles();
   const history = useHistory();
 
@@ -220,6 +230,14 @@ const Detail = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const refreshData = () => {
+    fetchData();
+  };
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   // -------------RETURN---------------
   return (
     <div>
@@ -244,6 +262,7 @@ const Detail = () => {
                   fontSize: "18px",
                   color: "#079992",
                   fontWeight: "bold",
+                  pointerEvents: "stroke",
                 }}
               >
                 {capitalize(author_name)}
@@ -281,7 +300,27 @@ const Detail = () => {
             {comment_count}
           </Typography>
         </CardActions>
-        <CardContent>
+        <Grid container justify="center">
+          <EditComment
+            open={editComment}
+            setOpen={setEditComment}
+            commentContent={editCommentContent}
+            changedContent={changedContent}
+            setChangedContent={setChangedContent}
+            refreshData={refreshData}
+            slug={slug}
+          />
+        </Grid>
+        <Grid container justify="center">
+          <DeleteComment
+            open={deleteComment}
+            setOpen={setDeleteComment}
+            commentContent={editCommentContent}
+            refreshData={refreshData}
+            slug={slug}
+          />
+        </Grid>
+        <CardContent style={{ pointerEvents: "all" }}>
           <Typography
             style={{
               fontSize: "1.5rem",
@@ -295,70 +334,123 @@ const Detail = () => {
           </Typography>
           {/* comment-box---------------------- */}
           {comments?.length
-            ? comments.map((item, idx) => {
-                return (
-                  <div
-                    key={idx}
-                    style={{
-                      backgroundColor: "#ecf0f1",
-                      marginBottom: "12px",
-                      padding: "5px",
-                      paddingLeft: "8px",
-                      borderRadius: "6px",
-                      display: "flex",
-                      boxShadow: "2px 2px 5px #636e72",
-                    }}
-                  >
+            ? comments
+                .sort(
+                  ({ id: previousID }, { id: currentID }) =>
+                    previousID - currentID
+                )
+                .map((item) => {
+                  return (
                     <div
+                      key={item.time_stamp}
                       style={{
-                        padding: "6px",
+                        backgroundColor: "#ecf0f1",
+                        marginBottom: "12px",
+                        padding: "5px",
+                        paddingLeft: "8px",
+                        borderRadius: "6px",
                         display: "flex",
-                        justifyContent: "flex-start",
-                        alignItems: "top",
+                        boxShadow: "2px 2px 5px #636e72",
                       }}
                     >
-                      <Avatar
-                        alt="Commenter Avatar"
-                        src={item?.commenter_avatar}
-                        className={classes.small}
-                      />
+                      <div
+                        style={{
+                          padding: "6px",
+                          display: "flex",
+                          justifyContent: "flex-start",
+                          alignItems: "top",
+                        }}
+                      >
+                        <Avatar
+                          alt="Commenter Avatar"
+                          src={item?.commenter_avatar}
+                          className={classes.small}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          paddingLeft: "12px",
+                          paddingRight: "8px",
+                          width: "100%",
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <div>
+                            <Typography
+                              style={{
+                                fontSize: "14px",
+                                color: "#079992",
+                                fontWeight: "bold",
+                              }}
+                            >
+                              {capitalize(item?.commenter_name)}
+                            </Typography>
+                          </div>
+                          {console.log("id: ", item.id)}
+                          {item.commenter == userId ? (
+                            <div>
+                              <Button
+                                onClick={() => {
+                                  setEditComment(true);
+                                  setEditCommentContent(item);
+                                  setChangedContent(item.content);
+                                }}
+                                style={{
+                                  height: "1rem",
+                                  maxWidth: "5px",
+                                  color: "blue",
+                                }}
+                              >
+                                <Edit />
+                              </Button>
+                              <Button
+                                onClick={() => {
+                                  setDeleteComment(true);
+                                  setEditCommentContent(item);
+                                }}
+                                style={{
+                                  height: "1rem",
+                                  maxWidth: "5px",
+                                  color: "red",
+                                }}
+                              >
+                                <DeleteForever />
+                              </Button>
+                            </div>
+                          ) : null}
+                        </div>
+                        <Typography
+                          style={{
+                            fontSize: "14px",
+                          }}
+                        >
+                          {item?.content}
+                        </Typography>
+                        <Typography
+                          style={{
+                            textAlign: "right",
+                            fontSize: "12px",
+                            color: "#3c6382",
+                          }}
+                        >
+                          {moment(item?.time_stamp).format("mm:ss") ===
+                          moment(item?.edit_time).format("mm:ss")
+                            ? moment(item?.time_stamp).format(
+                                "MMMM Do YYYY, h:mm"
+                              )
+                            : moment(item?.edit_time).format(
+                                "MMMM Do YYYY, h:mm"
+                              ) + " (edited)"}
+                        </Typography>
+                      </div>
                     </div>
-                    <div
-                      style={{
-                        paddingLeft: "12px",
-                        paddingRight: "8px",
-                        width: "100%",
-                      }}
-                    >
-                      <Typography
-                        style={{
-                          fontSize: "14px",
-                          color: "#079992",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {capitalize(item?.commenter_name)}
-                      </Typography>
-                      <Typography
-                        style={{
-                          fontSize: "14px",
-                        }}
-                      >
-                        {item?.content}
-                      </Typography>
-                      <Typography
-                        style={{
-                          textAlign: "right",
-                          fontSize: "12px",
-                          color: "#3c6382",
-                        }}
-                      >
-                        {moment(item?.time_stamp).format("MMMM Do YYYY, h:mm")}
-                      </Typography>
-                    </div>
-                  </div>
-                );
-              })
+                  );
+                })
             : "No comments"}
           {/* <TextField
             ref={commentRef}
@@ -441,15 +533,27 @@ const Detail = () => {
         )}
         <Box p={1}>
           <Button
-            //   onClick={() => history.push("/create")}
-            onClick={() => null}
+            onClick={() => history.push("/home")}
             variant="contained"
             color="primary"
           >
-            Create new post
+            Back{" "}
           </Button>
         </Box>
       </Box>
+      <div
+        style={{
+          position: "fixed",
+          bottom: "3rem",
+          right: "1rem",
+          backgroundColor: "#3f51b5",
+          borderRadius: "50%",
+        }}
+      >
+        <Button onClick={scrollTop} style={{ height: "3rem", color: "white" }}>
+          <ExpandLess />
+        </Button>
+      </div>
     </div>
   );
 };

@@ -68,6 +68,7 @@ export default function SignUp({ setShowSI }) {
     }),
     onSubmit: (values) => {
       fetchData(values);
+      setShowSI(true);
     },
   });
 

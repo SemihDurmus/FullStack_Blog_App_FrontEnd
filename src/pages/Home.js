@@ -100,7 +100,8 @@ function Home() {
     try {
       const result = await axios.get(postListURL);
       const data = result?.data;
-      setPostDisplayList(data);
+      const published = data.filter((item) => item.status === "published");
+      setPostDisplayList(published);
     } catch ({ response }) {
       if (response) {
         console.log("No data");
@@ -234,8 +235,8 @@ function Home() {
         <Grid item xs={12}>
           <Grid container justify="center" spacing={5}>
             {sanitizedData.length ? (
-              filteredDataWithPagination.map((item, id) => {
-                return <PostCard item={item} itemStatus={false} id={id} />;
+              filteredDataWithPagination.map((item, idx) => {
+                return <PostCard item={item} itemStatus={false} id={idx} />;
               })
             ) : (
               <div>
