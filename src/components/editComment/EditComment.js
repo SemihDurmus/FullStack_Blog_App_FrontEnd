@@ -56,22 +56,21 @@ export default function EditComment({
 
   const body = (
     <div
-      className="itemContainer"
       style={{
         position: "absolute",
         width: "60%",
+        minWidth: "300px",
         alignContent: "center",
         outline: "none",
         top: "30%",
-        left: "19%",
+        left: "50%",
+        transform: "translateX(-50%)",
       }}
     >
       <div
         style={{
           backgroundColor: "#ecf0f1",
-          marginBottom: "12px",
-          padding: "5px",
-          paddingLeft: "8px",
+          padding: "8px 8px 16px 8px",
           borderRadius: "6px",
           display: "flex",
           boxShadow: "2px 2px 5px #636e72",
@@ -92,8 +91,7 @@ export default function EditComment({
         </div>
         <div
           style={{
-            paddingLeft: "12px",
-            paddingRight: "8px",
+            padding: "6px 8px 0 12px",
             width: "100%",
           }}
         >
@@ -146,16 +144,16 @@ export default function EditComment({
             <button
               className="btn-submit"
               onClick={handleCommentSend}
-              style={{ width: "3rem", height: "1rem", marginLeft: 0 }}
+              style={{ width: "4rem", height: "1.3rem", marginLeft: 0 }}
             >
-              <p style={{ fontSize: "10px" }}>Submit</p>
+              <p style={{ fontSize: "11px" }}>Submit</p>
             </button>
             <button
               className="btn-cancel"
               onClick={() => setOpen(false)}
-              style={{ width: "3rem", height: "1rem" }}
+              style={{ width: "4rem", height: "1.3rem" }}
             >
-              <p style={{ fontSize: "10px" }}>Cancel</p>
+              <p style={{ fontSize: "11px" }}>Cancel</p>
             </button>
           </div>
         </div>

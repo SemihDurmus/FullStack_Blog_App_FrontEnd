@@ -1,4 +1,4 @@
-import { useState, useRef, useContext, useEffect, useMemo } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -425,33 +425,38 @@ const Detail = () => {
                           {console.log("id: ", item.id)}
                           {item.commenter == userId ? (
                             <div>
-                              <Button
+                              <IconButton
+                                size="small"
                                 onClick={() => {
                                   setEditComment(true);
                                   setEditCommentContent(item);
                                   setChangedContent(item.content);
                                 }}
-                                style={{
-                                  height: "1rem",
-                                  maxWidth: "5px",
-                                  color: "blue",
-                                }}
                               >
-                                <Edit />
-                              </Button>
-                              <Button
+                                <Edit
+                                  style={{
+                                    width: "1.2rem",
+                                    height: "1.2rem",
+                                    color: "green",
+                                  }}
+                                />
+                              </IconButton>
+                              <IconButton
+                                size="small"
+                                style={{ marginLeft: "1rem" }}
                                 onClick={() => {
                                   setDeleteComment(true);
                                   setEditCommentContent(item);
                                 }}
-                                style={{
-                                  height: "1rem",
-                                  maxWidth: "5px",
-                                  color: "red",
-                                }}
                               >
-                                <DeleteForever />
-                              </Button>
+                                <DeleteForever
+                                  style={{
+                                    width: "1.2rem",
+                                    height: "1.2rem",
+                                    color: "tomato",
+                                  }}
+                                />
+                              </IconButton>
                             </div>
                           ) : null}
                         </div>
@@ -465,7 +470,7 @@ const Detail = () => {
                         <Typography
                           style={{
                             textAlign: "right",
-                            fontSize: "12px",
+                            fontSize: "11px",
                             color: "#3c6382",
                           }}
                         >
@@ -475,7 +480,7 @@ const Detail = () => {
                                 "MMMM Do YYYY, h:mm"
                               )
                             : moment(item?.edit_time).format(
-                                "MMMM Do YYYY, h:mm"
+                                "MMM Do YYYY, h:mm"
                               ) + " (edited)"}
                         </Typography>
                       </div>
@@ -588,15 +593,21 @@ const Detail = () => {
       <div
         style={{
           position: "fixed",
-          bottom: "3rem",
-          right: "1rem",
-          backgroundColor: "#3f51b5",
+          bottom: "1.5rem",
+          right: "1.5rem",
           borderRadius: "50%",
+          backgroundColor: "#99bbad",
         }}
       >
-        <Button onClick={scrollTop} style={{ height: "3rem", color: "white" }}>
-          <ExpandLess />
-        </Button>
+        <IconButton onClick={scrollTop}>
+          <ExpandLess
+            style={{
+              width: "1.6rem",
+              height: "1.6rem",
+              color: "white",
+            }}
+          />
+        </IconButton>
       </div>
     </div>
   );
