@@ -8,6 +8,8 @@ import Grid from "@material-ui/core/Grid";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import EditIcon from "@material-ui/icons/Edit";
+import TuneIcon from "@material-ui/icons/Tune";
+
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 import { LoopCircleLoading } from "react-loadingg";
@@ -15,7 +17,6 @@ import { LoopCircleLoading } from "react-loadingg";
 import { Context } from "../../context/Context";
 import Navbar from "../../components/navbar/Navbar";
 import EditModal from "../../components/editProfile/EditModal";
-import ChangePassword from "../../components/changePassword/ChangePassword";
 import Stats from "../../components/stats/Stats";
 import Stories from "../../components/stories/Stories";
 
@@ -61,7 +62,6 @@ export default function ProfilePage() {
 
   //----------Modal------------------------
   const [open, setOpen] = useState(false);
-  const [openPassword, setOpenPassword] = useState(false);
   const [statsOpen, setStatsOpen] = useState(false);
 
   //----------Fetch Profile Data------------
@@ -136,7 +136,15 @@ export default function ProfilePage() {
                 className={classes.media}
               />
             </Grid>
-
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => history.push("/account")}
+              style={{ minWidth: "8rem", margin: "0.5rem" }}
+            >
+              <TuneIcon fontSize="small" />
+              &nbsp; Account Settings
+            </Button>
             <Grid container justify="center">
               <Button
                 variant="contained"
@@ -181,12 +189,7 @@ export default function ProfilePage() {
                 refresh={refresh}
               />
             </Grid>
-            <Grid container justify="center">
-              <ChangePassword
-                openPassword={openPassword}
-                setOpenPassword={setOpenPassword}
-              />
-            </Grid>
+
             <Grid container justify="center">
               <Stats open={statsOpen} setOpen={setStatsOpen} />
             </Grid>
@@ -203,18 +206,7 @@ export default function ProfilePage() {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => setOpenPassword(true)}
-                style={{ minWidth: "8rem", margin: "0.5rem" }}
-              >
-                <EditIcon fontSize="small" />
-                &nbsp; Change Password
-              </Button>
-            </Grid>
-            <Grid container xs={10} justify="center">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => history.goBack()}
+                onClick={() => history.push("/home")}
                 style={{ width: "8rem", margin: "0.5rem" }}
               >
                 <ArrowBackIosIcon fontSize="small" />

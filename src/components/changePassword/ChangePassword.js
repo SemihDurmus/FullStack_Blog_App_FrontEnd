@@ -71,7 +71,12 @@ export default function ChangePassword({ openPassword, setOpenPassword }) {
     } catch ({ response }) {
       if (response) {
         console.log(response);
-        alert(response?.data?.detail || response?.data?.old_password);
+        alert(
+          response?.data?.detail ||
+            (response?.data?.old_password == "Wrong password."
+              ? "Check your old password"
+              : response?.data?.old_password)
+        );
       } else {
         alert("Something went wrong!");
       }
