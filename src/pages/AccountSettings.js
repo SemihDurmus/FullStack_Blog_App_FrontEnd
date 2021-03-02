@@ -10,7 +10,6 @@ import DeleteAccount from "../components/deleteAccount/DeleteAccount";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
@@ -47,8 +46,15 @@ const header = {
   fontWeight: "bold",
 };
 
-const cellStyle = {
+const tableTitle = {
+  fontSize: "13px",
   fontWeight: "bold",
+  padding: "3px 10px",
+};
+
+const tableInfo = {
+  fontSize: "13px",
+  padding: "10px",
 };
 
 const buttonStyle = {
@@ -121,33 +127,33 @@ function AccountPage() {
           <TableContainer component={Paper} style={{ marginBottom: "1rem" }}>
             <Table className={classes.table} aria-label="simple table">
               <TableBody>
-                <TableRow style={{ color: "#fff" }}>
-                  <TableCell component="th" scope="row">
-                    <p style={cellStyle}>Username</p>
-                  </TableCell>
-                  <TableCell align="right">{userData?.username}</TableCell>
+                <TableRow>
+                  <p style={tableTitle}>Username</p>
                 </TableRow>
                 <TableRow>
-                  <TableCell component="th" scope="row">
-                    <p style={cellStyle}>Email</p>
-                  </TableCell>
-                  <TableCell align="right">{userData?.email}</TableCell>
+                  <p style={tableInfo}>{userData?.username}</p>
                 </TableRow>
                 <TableRow>
-                  <TableCell component="th" scope="row">
-                    <p style={cellStyle}>Member Since</p>
-                  </TableCell>
-                  <TableCell align="right">
+                  <p style={tableTitle}>Email</p>
+                </TableRow>
+                <TableRow>
+                  <p style={tableInfo}>{userData?.email}</p>
+                </TableRow>
+                <TableRow>
+                  <p style={tableTitle}>Member Since</p>
+                </TableRow>
+                <TableRow>
+                  <p style={tableInfo}>
                     {moment(userData?.date_joined).format("MMMM Do YYYY, h:mm")}
-                  </TableCell>
+                  </p>
                 </TableRow>
                 <TableRow>
-                  <TableCell component="th" scope="row">
-                    <p style={cellStyle}>Last Login</p>
-                  </TableCell>
-                  <TableCell align="right">
+                  <p style={tableTitle}>Last Login</p>
+                </TableRow>
+                <TableRow>
+                  <p style={tableInfo}>
                     {moment(userData?.last_login).format("MMMM Do YYYY, h:mm")}
-                  </TableCell>
+                  </p>
                 </TableRow>
               </TableBody>
             </Table>
