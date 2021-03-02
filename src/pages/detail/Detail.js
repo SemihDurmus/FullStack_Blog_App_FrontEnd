@@ -146,28 +146,6 @@ const Detail = () => {
     }
   };
 
-  //   const handleDeleteClick = async () => {
-  //     try {
-  //       const result = await axios.delete(
-  //         `https://clarusway-blogapp.herokuapp.com/api/delete/${slug}/`,
-  //         {
-  //           headers: {
-  //             Accept: "application/json",
-  //             "Content-Type": "application/json",
-  //             Authorization: "Token " + localStorage.getItem("token"),
-  //           },
-  //         }
-  //       );
-  //       history.push(`/`);
-  //     } catch ({ response }) {
-  //       if (response) {
-  //         console.log(response?.data?.detail);
-  //       } else {
-  //         console.log("Something went wrong!");
-  //       }
-  //     }
-  //   };
-
   //---------------Publish Post----------------------
   const handlePostMakePublish = async () => {
     try {
@@ -477,7 +455,7 @@ const Detail = () => {
                           {moment(item?.time_stamp).format("mm:ss") ===
                           moment(item?.edit_time).format("mm:ss")
                             ? moment(item?.time_stamp).format(
-                                "MMMM Do YYYY, h:mm"
+                                "MMM Do YYYY, h:mm"
                               )
                             : moment(item?.edit_time).format(
                                 "MMM Do YYYY, h:mm"
@@ -488,22 +466,6 @@ const Detail = () => {
                   );
                 })
             : "No comments"}
-          {/* <TextField
-            ref={commentRef}
-            fullWidth
-            margin="normal"
-            id="comment"
-            name="comment"
-            label="Add a comment"
-            value={comment}
-            onChange={handleCommentChange}
-            onKeyPress={handleCommentSend}
-            style={{
-              backgroundColor: "#b8e994",
-              padding: "8px",
-              paddingLeft: "15px",
-            }}
-          /> */}
           <textarea
             ref={commentRef}
             id="comment"

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-
 import Navbar from "../components/navbar/Navbar";
 import ChangePassword from "../components/changePassword/ChangePassword";
 import ChangeCredentials from "../components/changeCredentials/ChangeCredentials";
@@ -17,7 +16,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import PersonIcon from "@material-ui/icons/Person";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -26,7 +24,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 const useStyles = makeStyles({
   table: {
     width: "100%",
-    backgroundColor: "#7373f5",
+    backgroundColor: "#ffd384",
   },
 });
 
@@ -34,20 +32,40 @@ const useStyles = makeStyles({
 
 const bodyStyle = {
   width: "60%",
+  maxWidth: "600px",
+  minWidth: "300px",
   display: "flex",
   flexDirection: "column",
   margin: "auto",
 };
 const header = {
-  width: "30%",
-  fontSize: "2rem",
-  color: "black",
-  letterSpacing: "2px",
+  width: "100%",
+  fontSize: "1.8rem",
+  color: "#361E39",
   textAlign: "center",
   margin: "2rem auto",
   fontWeight: "bold",
 };
 
+const cellStyle = {
+  fontWeight: "bold",
+};
+
+const buttonStyle = {
+  cursor: "pointer",
+  textAlign: "center",
+  backgroundColor: "#709fb0",
+  color: "#fff",
+  fontWeight: "bold",
+  border: "none",
+  outline: "none",
+  fontSize: "11px",
+  padding: "8px",
+  width: "100px",
+  borderRadius: "12px",
+  boxShadow: " 3px 3px 3px #837777",
+};
+//-----------MAIN FUNC-----------------
 function AccountPage() {
   const classes = useStyles();
   let history = useHistory();
@@ -103,21 +121,21 @@ function AccountPage() {
           <TableContainer component={Paper} style={{ marginBottom: "1rem" }}>
             <Table className={classes.table} aria-label="simple table">
               <TableBody>
-                <TableRow>
+                <TableRow style={{ color: "#fff" }}>
                   <TableCell component="th" scope="row">
-                    <p style={{ fontWeight: "bolder" }}>Username</p>
+                    <p style={cellStyle}>Username</p>
                   </TableCell>
                   <TableCell align="right">{userData?.username}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell component="th" scope="row">
-                    <p style={{ fontWeight: "bolder" }}>Email</p>
+                    <p style={cellStyle}>Email</p>
                   </TableCell>
                   <TableCell align="right">{userData?.email}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell component="th" scope="row">
-                    <p style={{ fontWeight: "bolder" }}>Member Since</p>
+                    <p style={cellStyle}>Member Since</p>
                   </TableCell>
                   <TableCell align="right">
                     {moment(userData?.date_joined).format("MMMM Do YYYY, h:mm")}
@@ -125,7 +143,7 @@ function AccountPage() {
                 </TableRow>
                 <TableRow>
                   <TableCell component="th" scope="row">
-                    <p style={{ fontWeight: "bolder" }}>Last Login</p>
+                    <p style={cellStyle}>Last Login</p>
                   </TableCell>
                   <TableCell align="right">
                     {moment(userData?.last_login).format("MMMM Do YYYY, h:mm")}
@@ -154,52 +172,78 @@ function AccountPage() {
               setOpen={setOpenDeleteAccount}
             />
           </Grid>
-          <div>
-            <Button
-              variant="contained"
-              color="primary"
+          {/* ---------Buttons----------- */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "60%",
+              maxWidth: "600px",
+              minWidth: "300px",
+              alignSelf: "center",
+              margin: "1rem auto",
+            }}
+          >
+            <button
+              style={buttonStyle}
+              title="Change Credentials"
               onClick={() => {
                 setOpenCredentials(true);
               }}
-              style={{ minWidth: "8rem", margin: "0.5rem" }}
             >
               <PersonIcon fontSize="small" />
-              &nbsp; Change Credentials
-            </Button>
-          </div>
-          <div>
-            <Button
-              variant="contained"
-              color="primary"
+              <br /> CHANGE CREDENTIALS
+            </button>
+
+            <button
+              style={{
+                ...buttonStyle,
+                marginLeft: "10px",
+                marginRight: "10px",
+              }}
+              title="Change Password"
               onClick={() => setOpenPassword(true)}
-              style={{ minWidth: "8rem", margin: "0.5rem" }}
             >
               <EditIcon fontSize="small" />
-              &nbsp; Change Password
-            </Button>
-          </div>
-          <div>
-            <Button
-              variant="contained"
-              color="primary"
+              <br />
+              CHANGE PASSWORD
+            </button>
+
+            <button
+              style={{ ...buttonStyle, backgroundColor: "tomato" }}
+              title="Delete Account"
               onClick={() => setOpenDeleteAccount(true)}
-              style={{ minWidth: "8rem", margin: "0.5rem" }}
             >
               <DeleteIcon fontSize="small" />
-              &nbsp; Delete Account
-            </Button>
+              <br /> DELETE ACCOUNT
+            </button>
           </div>
         </div>
         <Grid container xs={12} justify="center">
-          <Button
-            variant="contained"
-            color="primary"
+          <button
+            style={{
+              ...buttonStyle,
+              backgroundColor: "#025955",
+              padding: "0 14px",
+              height: "2.5rem",
+              lineHeight: "2.5rem",
+              position: "relative",
+              textAlign: "right",
+              letterSpacing: "3px",
+            }}
             onClick={() => history.goBack()}
-            style={{ minWidth: "6rem", margin: "0.5rem" }}
           >
-            <ArrowBackIosIcon fontSize="small" />
-            &nbsp; Back
-          </Button>
+            <ArrowBackIosIcon
+              style={{
+                position: "absolute",
+                left: "20%",
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
+              fontSize="small"
+            />
+            &nbsp; BACK
+          </button>
         </Grid>
       </div>
     </>
