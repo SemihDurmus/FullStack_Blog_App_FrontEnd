@@ -4,6 +4,7 @@ import { Context } from "../../context/Context";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { wideButtonStyle } from "../../styles/smallElements";
 
 import PostCard from "../card/Card";
 
@@ -27,18 +28,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //-------------Inline Style-------------------
-const buttonStyle = {
-  padding: "10px",
-  outline: "none",
-  border: "0",
-  borderRadius: "20px",
-  cursor: "pointer",
-  width: "16rem",
-  fontSize: "1rem",
-  fontWeight: "bold",
-  backgroundColor: "#83acf1",
-  color: "#fff",
-};
 
 const h3Style = {
   width: "80%",
@@ -192,7 +181,10 @@ const Stories = () => {
         </>
       )}
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <button onClick={() => setStoriesOpen(false)} style={buttonStyle}>
+        <button
+          onClick={() => setStoriesOpen(false)}
+          style={{ ...wideButtonStyle, width: "16rem" }}
+        >
           Back to Profile Page
         </button>
       </div>

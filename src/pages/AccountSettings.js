@@ -6,6 +6,9 @@ import Navbar from "../components/navbar/Navbar";
 import ChangePassword from "../components/changePassword/ChangePassword";
 import ChangeCredentials from "../components/changeCredentials/ChangeCredentials";
 import DeleteAccount from "../components/deleteAccount/DeleteAccount";
+import { wideButtonStyle } from "../styles/smallElements";
+import { squareButtonsContainerStyle } from "../styles/smallElements";
+import { squareButtonStyle } from "../styles/smallElements";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -16,6 +19,7 @@ import Paper from "@material-ui/core/Paper";
 
 import Grid from "@material-ui/core/Grid";
 import EditIcon from "@material-ui/icons/Edit";
+import LockIcon from "@material-ui/icons/Lock";
 import PersonIcon from "@material-ui/icons/Person";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -57,20 +61,6 @@ const tableInfo = {
   padding: "10px",
 };
 
-const buttonStyle = {
-  cursor: "pointer",
-  textAlign: "center",
-  backgroundColor: "#709fb0",
-  color: "#fff",
-  fontWeight: "bold",
-  border: "none",
-  outline: "none",
-  fontSize: "11px",
-  padding: "8px",
-  width: "100px",
-  borderRadius: "12px",
-  boxShadow: " 3px 3px 3px #837777",
-};
 //-----------MAIN FUNC-----------------
 function AccountPage() {
   const classes = useStyles();
@@ -131,7 +121,9 @@ function AccountPage() {
                   <p style={tableTitle}>Username</p>
                 </TableRow>
                 <TableRow>
-                  <p style={tableInfo}>{userData?.username}</p>
+                  <p style={{ ...tableInfo, textTransform: "capitalize" }}>
+                    {userData?.username}
+                  </p>
                 </TableRow>
                 <TableRow>
                   <p style={tableTitle}>Email</p>
@@ -179,19 +171,9 @@ function AccountPage() {
             />
           </Grid>
           {/* ---------Buttons----------- */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "60%",
-              maxWidth: "600px",
-              minWidth: "300px",
-              alignSelf: "center",
-              margin: "1rem auto",
-            }}
-          >
+          <div style={squareButtonsContainerStyle}>
             <button
-              style={buttonStyle}
+              style={squareButtonStyle}
               title="Change Credentials"
               onClick={() => {
                 setOpenCredentials(true);
@@ -203,20 +185,21 @@ function AccountPage() {
 
             <button
               style={{
-                ...buttonStyle,
+                ...squareButtonStyle,
                 marginLeft: "10px",
                 marginRight: "10px",
+                backgroundColor: "#3c6382",
               }}
               title="Change Password"
               onClick={() => setOpenPassword(true)}
             >
-              <EditIcon fontSize="small" />
+              <LockIcon fontSize="small" />
               <br />
               CHANGE PASSWORD
             </button>
 
             <button
-              style={{ ...buttonStyle, backgroundColor: "tomato" }}
+              style={{ ...squareButtonStyle, backgroundColor: "tomato" }}
               title="Delete Account"
               onClick={() => setOpenDeleteAccount(true)}
             >
@@ -227,16 +210,7 @@ function AccountPage() {
         </div>
         <Grid container xs={12} justify="center">
           <button
-            style={{
-              ...buttonStyle,
-              backgroundColor: "#025955",
-              padding: "0 14px",
-              height: "2.5rem",
-              lineHeight: "2.5rem",
-              position: "relative",
-              textAlign: "right",
-              letterSpacing: "3px",
-            }}
+            style={{ ...wideButtonStyle, position: "relative" }}
             onClick={() => history.goBack()}
           >
             <ArrowBackIosIcon
@@ -248,7 +222,7 @@ function AccountPage() {
               }}
               fontSize="small"
             />
-            &nbsp; BACK
+            &nbsp; Back
           </button>
         </Grid>
       </div>
