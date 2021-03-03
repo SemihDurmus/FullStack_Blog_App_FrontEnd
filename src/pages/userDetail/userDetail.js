@@ -9,6 +9,9 @@ import Stats from "./userStats";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
+import { squareButtonStyle } from "../../styles/smallElements";
+import { wideButtonStyle } from "../../styles/smallElements";
 
 import { LoopCircleLoading } from "react-loadingg";
 
@@ -44,23 +47,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const buttonStyle = {
-  padding: "10px",
-  outline: "none",
-  border: "0",
-  borderRadius: "20px",
-  cursor: "pointer",
-  width: "16rem",
-  fontSize: "1rem",
-  fontWeight: "bold",
-  backgroundColor: "#83acf1",
-  color: "#fff",
-};
-
 function UserDetail() {
   const [user, setUser] = useState([]);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [statsOpen, setStatsOpen] = useState(false);
 
   const history = useHistory();
   let { username } = useParams();
@@ -91,7 +82,7 @@ function UserDetail() {
     }
   };
 
-  // --------fetch data------------
+  //--------fetch data------------
   const fetchPostData = async (
     postListURL = "https://fs-blog-backend.herokuapp.com/api/post-list/"
   ) => {
@@ -120,6 +111,7 @@ function UserDetail() {
     }, 2000);
   }, []);
 
+  //---------------RETURN------------
   return !user?.length ? (
     <div>
       <Navbar />
@@ -136,7 +128,6 @@ function UserDetail() {
       <Navbar />
       <Grid container className={classes.root} spacing={5} justify="center">
         <Grid item xs={12}>
-          <Stats username={username} />
           <Grid container justify="center" spacing={5}>
             <Grid container justify="center" style={{ marginBottom: "0.8rem" }}>
               <h2 style={{ margin: "2rem auto" }}>
@@ -150,6 +141,22 @@ function UserDetail() {
                 src={user[0].image}
                 alt="ProfilePicture"
                 className={classes.media}
+              />
+              <button
+                style={{
+                  ...squareButtonStyle,
+                  width: "4rem",
+                  marginLeft: "1rem",
+                }}
+                onClick={() => setStatsOpen(true)}
+              >
+                <EqualizerIcon fontSize="small" />
+                <br /> STATS
+              </button>
+              <Stats
+                username={username}
+                open={statsOpen}
+                setOpen={setStatsOpen}
               />
             </Grid>
             <Grid
@@ -169,7 +176,12 @@ function UserDetail() {
               </p>
             </Grid>
           </Grid>
-          <Grid container justify="center" spacing={5}>
+          <Grid
+            container
+            justify="center"
+            spacing={5}
+            style={{ marginTop: "2rem" }}
+          >
             {posts.length ? (
               posts.map((item, idx) => {
                 return <PostCard item={item} itemStatus={false} id={idx} />;
@@ -186,11 +198,7 @@ function UserDetail() {
               </div>
             )}
             <Box p={9}>
-              <button
-                type=""
-                onClick={() => history.goBack()}
-                style={buttonStyle}
-              >
+              <button onClick={() => history.goBack()} style={wideButtonStyle}>
                 Back
               </button>
             </Box>
