@@ -30,7 +30,7 @@ export const inputStyle = {
 export const buttonStyle = {
   width: "200px",
   height: "30px",
-  border: "1px solid #f0f0f0",
+  border: "none",
   outline: "none",
   paddingLeft: "0",
   boxSizing: "border-box",
@@ -42,6 +42,7 @@ export const buttonStyle = {
   letterSpacing: "1px",
   fontWeight: "bold",
   marginBottom: "10px",
+  boxShadow: " 3px 3px 3px #837777",
 };
 
 export const iconStyle = {
@@ -50,13 +51,19 @@ export const iconStyle = {
   left: "12px",
 };
 
+export const labelStyle = {
+  margin: "12px auto 6px 0",
+  fontSize: "14px",
+  color: "green",
+};
+
 export const errorMessageStyle = {
   fontSize: "10px",
   backgroundColor: "rgb(5, 5, 5)",
   width: "100%",
   borderRadius: "10px",
   textAlign: "center",
-  color: "rgb(241, 95, 95)",
+  color: "yellow",
   margin: "2px auto",
   padding: "2px",
 };

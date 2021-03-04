@@ -2,8 +2,14 @@ import React, { useContext, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
 import axios from "axios";
+import { statsModalContainer } from "../styles/modals";
+import { iconContainerStyle } from "../styles/signInUp";
+import { iconStyle } from "../styles/signInUp";
+import { inputStyle } from "../styles/signInUp";
+import { buttonStyle } from "../styles/signInUp";
+import LockIcon from "@material-ui/icons/Lock";
 
-import { Context } from "../../context/Context";
+import { Context } from "../context/Context";
 
 //-------------MAIN FUNC------------
 export default function DeleteAccount({ open, setOpen }) {
@@ -47,42 +53,65 @@ export default function DeleteAccount({ open, setOpen }) {
   };
 
   const body = (
-    <div className="itemContainer">
-      <div
+    <div
+      style={{
+        ...statsModalContainer,
+        minHeight: "14rem",
+        height: "14rem",
+      }}
+    >
+      <p
         style={{
-          backgroundColor: "#ecf0f1",
-          marginBottom: "12px",
-          padding: "1rem",
-          borderRadius: "6px",
-          display: "flex",
-          flexFlow: "column",
-          boxShadow: "2px 2px 5px #636e72",
-          alignItems: "center",
-          justifyContent: "center",
+          fontSize: "0.9rem",
+          textAlign: "center",
+          color: "tomato",
+          fontWeight: "bold",
         }}
       >
-        <div>
-          <p style={{ fontSize: "0.9rem", textAlign: "center" }}>
-            Sure to delete account? All your posts will be deleted as well.
-          </p>
+        😮 Sure to delete account?
+        <br /> All your posts will be deleted as well!
+      </p>
+
+      <div style={iconContainerStyle}>
+        <div style={iconStyle}>
+          <LockIcon fontSize="small" />
         </div>
-        <div>
-          <input
-            ref={inputRef}
-            name="password"
-            type="password"
-            placeholder="Password"
-            // value={inputRef.current.value}
-          />
-        </div>
-        <div className="buttonContainer">
-          <button className="btn-submit" onClick={handleAccountDelete}>
-            <p style={{ fontSize: "10px" }}>Yes</p>
-          </button>
-          <button className="btn-cancel" onClick={() => setOpen(false)}>
-            <p style={{ fontSize: "10px" }}>No</p>
-          </button>
-        </div>
+
+        <input
+          style={inputStyle}
+          ref={inputRef}
+          name="password"
+          type="password"
+          placeholder="Password"
+        />
+      </div>
+
+      <div
+        style={{
+          height: "5rem",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <button
+          style={{ ...buttonStyle, width: "8rem" }}
+          onClick={handleAccountDelete}
+        >
+          Yes
+        </button>
+        <button
+          style={{
+            ...buttonStyle,
+            width: "8rem",
+            marginLeft: "12px",
+            backgroundColor: "hsl(34, 80%, 73%)",
+          }}
+          onClick={() => setOpen(false)}
+        >
+          No
+        </button>
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-import "./SignInUp.css";
-
 import PersonIcon from "@material-ui/icons/Person";
 import LockIcon from "@material-ui/icons/Lock";
 import EmailIcon from "@material-ui/icons/Email";
@@ -139,14 +137,24 @@ export default function SignUp({ setShowSI }) {
         </div>
 
         <button
-          style={{ ...buttonStyle, marginTop: "6px" }}
+          style={{
+            ...buttonStyle,
+            marginTop: "6px",
+            border: "1px solid #fff",
+            boxShadow: "0",
+          }}
           className="btn"
           type="submit"
         >
           Submit
         </button>
         <button
-          style={buttonStyle}
+          style={{
+            ...buttonStyle,
+            marginTop: "6px",
+            border: "1px solid #fff",
+            boxShadow: "0",
+          }}
           className="btn"
           onClick={() => setShowSI(true)}
         >
