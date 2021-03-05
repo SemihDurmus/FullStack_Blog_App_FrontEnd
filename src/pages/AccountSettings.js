@@ -86,7 +86,7 @@ function AccountPage() {
         }
       );
       setUserData(result.data);
-      console.log(result.data);
+      //console.log(result.data);
     } catch ({ response }) {
       if (response) {
         console.log("No data");
