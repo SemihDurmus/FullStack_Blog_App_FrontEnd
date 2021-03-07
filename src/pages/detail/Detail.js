@@ -7,7 +7,7 @@ import moment from "moment";
 
 import { Context } from "../../context/Context";
 import EditComment from "../../components/editComment/EditComment";
-import DeleteComment from "../../components/deleteComment/DeleteComment";
+import DeleteComment from "../../components/DeleteComment";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -134,7 +134,7 @@ const Detail = () => {
 
   const handleLikeClick = async () => {
     try {
-      const result = await axios.post(
+      await axios.post(
         `https://fs-blog-backend.herokuapp.com/api/${slug}/like/`,
         null,
         {
@@ -158,7 +158,7 @@ const Detail = () => {
   //---------------Publish Post----------------------
   const handlePostMakePublish = async () => {
     try {
-      const result = await axios.put(
+      await axios.put(
         `https://fs-blog-backend.herokuapp.com/api/${slug}/edit/`,
         {
           status: "published",
@@ -193,7 +193,7 @@ const Detail = () => {
   const handleCommentSend = async (key) => {
     if (key?.charCode === 13) {
       try {
-        const result = await axios.post(
+        await axios.post(
           `https://fs-blog-backend.herokuapp.com/api/${slug}/comment-create/`,
           { content: comment },
           {
@@ -218,7 +218,7 @@ const Detail = () => {
 
   const handleCommentSendWithClick = async () => {
     try {
-      const result = await axios.post(
+      await axios.post(
         `https://fs-blog-backend.herokuapp.com/api/${slug}/comment-create/`,
         { content: comment },
         {
@@ -274,30 +274,58 @@ const Detail = () => {
           />
           <CardContent>
             <Typography className={classes.title}>{title}</Typography>
-            <CardActions>
-              <Avatar
-                alt="User Avatar"
-                src={author_avatar}
-                className={classes.small}
-                onClick={() => goToUserDetailPage(author_name)}
-              />
-              <Typography
-                onClick={() => goToUserDetailPage(author_name)}
+            <div
+              style={{
+                border: "1px solid #719fb0",
+                display: "flex",
+                borderRadius: "10px",
+                justifyContent: "space-between",
+                marginBottom: "2rem",
+                padding: "8px",
+              }}
+            >
+              <CardActions
                 style={{
-                  fontSize: "18px",
-                  color: "#079992",
-                  fontWeight: "bold",
-                  pointerEvents: "stroke",
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
-                {capitalize(author_name)}
-              </Typography>
-            </CardActions>
-            <Typography
-              style={{ textAlign: "right", fontSize: "13px", color: "#3c6382" }}
-            >
-              {moment(item.publish_date).format("MMMM Do YYYY, h:mm")}
-            </Typography>
+                <Avatar
+                  alt="User Avatar"
+                  src={author_avatar}
+                  className={classes.small}
+                  onClick={() => goToUserDetailPage(author_name)}
+                />
+                <Typography
+                  onClick={() => goToUserDetailPage(author_name)}
+                  style={{
+                    fontSize: "18px",
+                    color: "#079992",
+                    fontWeight: "bold",
+                    marginLeft: "1rem",
+                    pointerEvents: "stroke",
+                  }}
+                >
+                  {capitalize(author_name)}
+                </Typography>
+              </CardActions>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-end",
+                }}
+              >
+                <Typography
+                  style={{
+                    textAlign: "right",
+                    fontSize: "13px",
+                    color: "#3c6382",
+                  }}
+                >
+                  {moment(item.publish_date).format("MMMM Do YYYY, h:mm")}
+                </Typography>
+              </div>
+            </div>
             <p className={classes.module}>{content}</p>
           </CardContent>
         </CardActionArea>
@@ -584,7 +612,10 @@ const Detail = () => {
           backgroundColor: "#99bbad",
         }}
       >
-        <IconButton onClick={scrollTop}>
+        <IconButton
+          onClick={scrollTop}
+          style={{ boxShadow: "4px 3px 5px grey" }}
+        >
           <ExpandLess
             style={{
               width: "1.6rem",
