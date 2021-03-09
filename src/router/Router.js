@@ -10,6 +10,7 @@ import Detail from "../pages/detail/Detail";
 import UserDetail from "../pages/userDetail/userDetail";
 import PasswordReset from "../pages/PasswordReset";
 import PasswordResetConfirm from "../pages/PasswordResetConfirm";
+import CreatePost from "../pages/CreatePost";
 import PrivateRouter from "./PrivateRouter";
 
 export default function Router() {
@@ -35,6 +36,7 @@ export default function Router() {
             exact
           />
           <PrivateRouter path="/detail/:slug" component={Detail} exact />
+          <PrivateRouter path="/create" component={CreatePost} exact />
           {/* 
             <Route path="/detail/:slug" component={PostDetail} exact />
              */}
