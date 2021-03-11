@@ -322,7 +322,11 @@ const Detail = () => {
                     color: "#3c6382",
                   }}
                 >
-                  {moment(item.publish_date).format("MMMM Do YYYY, h:mm")}
+                  {moment(item?.publish_date).format("mm:ss") ===
+                  moment(item?.update_date).format("mm:ss")
+                    ? moment(item?.publish_date).format("MMM Do YYYY, hh:mm")
+                    : moment(item?.update_date).format("MMM Do YYYY, hh:mm") +
+                      " (edited)"}
                 </Typography>
               </div>
             </div>
@@ -578,7 +582,7 @@ const Detail = () => {
             <Box p={1}>
               <button
                 style={{ ...squareButtonStyle, backgroundColor: "#3c6382" }}
-                onClick={() => null}
+                onClick={() => history.push(`/edit/${slug}`)}
               >
                 <Edit />
                 <br />
