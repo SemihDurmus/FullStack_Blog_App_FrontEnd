@@ -585,7 +585,12 @@ const Detail = () => {
             <Box p={1}>
               <button
                 style={{ ...squareButtonStyle, backgroundColor: "#3c6382" }}
-                onClick={() => history.push(`/edit/${slug}`)}
+                onClick={() =>
+                  history.push({
+                    pathname: `/edit/${slug}`,
+                    state: { postedItem: item },
+                  })
+                }
               >
                 <Edit />
                 <br />
