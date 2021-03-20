@@ -7,7 +7,6 @@ const { Provider } = Context;
 
 export const ContextProvider = ({ children }) => {
   const user_id = localStorage.getItem("userId");
-  const session_token = localStorage.getItem("token");
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [userId, setUserId] = useState(user_id);
   const [keyword, setKeyword] = useState("");

@@ -46,12 +46,12 @@ export default function EditModal({ open, setOpen, profile, refresh }) {
       bio: Yup.string().max(10000, "Must be less than 10000 chars"),
     }),
     onSubmit: (values) => {
-      fetchData(values);
+      updateData(values);
       setOpen(false);
     },
   });
 
-  const fetchData = (values) => {
+  const updateData = (values) => {
     putData("user/profile/", values)
       .then((data, err) => {
         alert("Successfully updated!");

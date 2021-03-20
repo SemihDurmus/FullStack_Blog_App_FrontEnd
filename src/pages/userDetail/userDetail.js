@@ -5,10 +5,13 @@ import axios from "axios";
 import Navbar from "../../components/navbar/Navbar";
 import PostCard from "../../components/card/Card";
 import Stats from "./userStats";
+import Chat from "./Chat";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import ForumRoundedIcon from "@material-ui/icons/ForumRounded";
+
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import { squareButtonStyle } from "../../styles/smallElements";
 import { wideButtonStyle } from "../../styles/smallElements";
@@ -52,10 +55,13 @@ function UserDetail() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [statsOpen, setStatsOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
 
   const history = useHistory();
   let { username } = useParams();
   const classes = useStyles();
+
+  const sender = localStorage.getItem("username");
 
   // --------fetch user data------------
   const fetchData = async () => {
@@ -176,6 +182,27 @@ function UserDetail() {
               </p>
             </Grid>
           </Grid>
+          {sender === user[0].user ? null : (
+            <>
+              <ForumRoundedIcon
+                onClick={() => setChatOpen(true)}
+                style={{
+                  position: "absolute",
+                  top: "30%",
+                  right: "20%",
+                  fontSize: 100,
+                  color: "grey",
+                  cursor: "pointer",
+                }}
+              />
+              <Chat
+                open={chatOpen}
+                setOpen={setChatOpen}
+                sender={sender}
+                receiver={user[0].user}
+              />
+            </>
+          )}
           <Grid
             container
             justify="center"

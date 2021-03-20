@@ -29,5 +29,6 @@ export const putData = async (path, data) => {
       },
     }
   );
+  console.log({ response });
   return response;
 };
