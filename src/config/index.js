@@ -1,4 +1,4 @@
-const API_PATH = "ws://localhost:8000/ws/chat/";
+const API_PATH = "ws://fs-blog-backend.herokuapp.com/ws/chat/";
 
 export default {
   API_PATH,

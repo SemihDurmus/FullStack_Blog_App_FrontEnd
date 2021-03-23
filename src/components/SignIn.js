@@ -52,7 +52,6 @@ export default function SignIn() {
       password: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       if (values.username === "") {
         setSignInError("Enter username");
       } else if (values.password === "") {

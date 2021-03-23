@@ -158,7 +158,7 @@ function Home() {
   // ----------useEffects--------
   useEffect(() => {
     fetchData();
-    console.log("token : ", localStorage.getItem("token"));
+    // console.log("token : ", localStorage.getItem("token"));
   }, []);
 
   useEffect(() => {
@@ -172,7 +172,6 @@ function Home() {
 
   useEffect(() => {
     paginationFunc();
-    // console.log(sanitizedData);
   }, [sanitizedData, offset, postDisplayList]);
 
   useEffect(() => {
