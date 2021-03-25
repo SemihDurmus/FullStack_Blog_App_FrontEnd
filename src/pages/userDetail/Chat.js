@@ -10,7 +10,14 @@ import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
 import WebSocketInstance from "../../services/WebSocket";
 
 //-------------MAIN FUNC------------
-export default function Chat({ open, setOpen, sender, receiver }) {
+export default function Chat({
+  open,
+  setOpen,
+  sender,
+  receiver,
+  senderObj,
+  receiverObj,
+}) {
   const [text, setText] = useState("");
   const [newMessage, setNewMessage] = useState([]);
 
@@ -25,7 +32,7 @@ export default function Chat({ open, setOpen, sender, receiver }) {
   const callback = () => {
     WebSocketInstance.initChatUser(sender);
     WebSocketInstance.addCallbacks(setMess, addMessage);
-    WebSocketInstance.fetchMessages(sender);
+    WebSocketInstance.fetchMessages(sender, receiver);
   };
 
   function waitForSocketConnection() {
@@ -54,6 +61,7 @@ export default function Chat({ open, setOpen, sender, receiver }) {
   const sendMessageHandler = () => {
     const messageObject = {
       from: sender,
+      to: receiver,
       text: text,
     };
     WebSocketInstance.newChatMessage(messageObject);
@@ -63,7 +71,9 @@ export default function Chat({ open, setOpen, sender, receiver }) {
   //----------------Filter Message List-------------------
   const filteredMessageList = () => {
     const newList = messages.filter(
-      (item) => item.author === sender || item.author === receiver
+      (item) =>
+        (item.author === sender && item.receiver === receiver) ||
+        (item.author === receiver && item.receiver === sender)
     );
     setSanitizedMessageList(newList);
   };
@@ -154,8 +164,14 @@ export default function Chat({ open, setOpen, sender, receiver }) {
                         paddingRight: "0.5rem",
                       }}
                     >
-                      <Avatar alt="Commenter Avatar" src={null} />
-
+                      <Avatar
+                        alt="Commenter Avatar"
+                        src={
+                          item?.author === senderObj.user
+                            ? senderObj?.image
+                            : receiverObj?.image
+                        }
+                      />
                       <Typography
                         style={{
                           fontSize: "12px",
