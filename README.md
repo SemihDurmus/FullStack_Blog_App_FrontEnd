@@ -83,6 +83,7 @@ The packages/dependencies below should be installed prior to running the app.
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "formik": "^2.2.6",
+    "gh-pages": "^3.1.0",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -101,7 +102,7 @@ The packages/dependencies below should be installed prior to running the app.
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For exmpale -->
 
-- Source of Backend and APIs : [Live source on heroku](https://fs-blog-backend.herokuapp.com/)
+- Source of Backend and APIs : [Live on heroku](https://fs-blog-backend.herokuapp.com/)
 - Source of Backend Code : [Repository](https://github.com/SemihDurmus/Fullstack_Blog_App_Backend)
 
 ## Contact

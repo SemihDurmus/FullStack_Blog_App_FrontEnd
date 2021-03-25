@@ -1,4 +1,5 @@
 {
+  "homepage": "https://SemihDurmus.github.io/FullStack_Blog_App_FrontEnd",
   "name": "blog-app",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +11,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "formik": "^2.2.6",
+    "gh-pages": "^3.1.0",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -24,6 +26,8 @@
   },
   "proxy": "https://localhost:3000",
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
