@@ -1,6 +1,6 @@
 {
-  "homepage": "https://SemihDurmus.github.io/FullStack_Blog_App_FrontEnd",
   "name": "blog-app",
+  "homepage": "https://semihdurmus.github.io/FullStack_Blog_App_FrontEnd/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,7 +26,7 @@
   },
   "proxy": "https://localhost:3000",
   "scripts": {
-    "predeploy": "yarn run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
