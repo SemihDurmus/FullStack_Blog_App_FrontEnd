@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/FullStack_Blog_App_FrontEnd/static/css/main.cb30f577.chunk.css",
+    "main.js": "/FullStack_Blog_App_FrontEnd/static/js/main.a3c12ce2.chunk.js",
+    "main.js.map": "/FullStack_Blog_App_FrontEnd/static/js/main.a3c12ce2.chunk.js.map",
+    "runtime-main.js": "/FullStack_Blog_App_FrontEnd/static/js/runtime-main.b0e665ed.js",
+    "runtime-main.js.map": "/FullStack_Blog_App_FrontEnd/static/js/runtime-main.b0e665ed.js.map",
+    "static/js/2.2eb8a300.chunk.js": "/FullStack_Blog_App_FrontEnd/static/js/2.2eb8a300.chunk.js",
+    "static/js/2.2eb8a300.chunk.js.map": "/FullStack_Blog_App_FrontEnd/static/js/2.2eb8a300.chunk.js.map",
+    "static/js/3.9daf63c0.chunk.js": "/FullStack_Blog_App_FrontEnd/static/js/3.9daf63c0.chunk.js",
+    "static/js/3.9daf63c0.chunk.js.map": "/FullStack_Blog_App_FrontEnd/static/js/3.9daf63c0.chunk.js.map",
+    "index.html": "/FullStack_Blog_App_FrontEnd/index.html",
+    "static/css/main.cb30f577.chunk.css.map": "/FullStack_Blog_App_FrontEnd/static/css/main.cb30f577.chunk.css.map",
+    "static/js/2.2eb8a300.chunk.js.LICENSE.txt": "/FullStack_Blog_App_FrontEnd/static/js/2.2eb8a300.chunk.js.LICENSE.txt",
+    "static/media/Landing.css": "/FullStack_Blog_App_FrontEnd/static/media/norway.09b97a96.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b0e665ed.js",
+    "static/js/2.2eb8a300.chunk.js",
+    "static/css/main.cb30f577.chunk.css",
+    "static/js/main.a3c12ce2.chunk.js"
+  ]
+}
