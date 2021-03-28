@@ -60,7 +60,6 @@ export default function Navbar() {
     resetSearchSettings();
     history.push("/home");
   };
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
