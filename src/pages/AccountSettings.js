@@ -9,6 +9,7 @@ import DeleteAccount from "../components/DeleteAccount";
 import { wideButtonStyle } from "../styles/smallElements";
 import { squareButtonsContainerStyle } from "../styles/smallElements";
 import { squareButtonStyle } from "../styles/smallElements";
+import { wallpaper } from "../styles/background";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -106,7 +107,7 @@ function AccountPage() {
 
   return (
     <>
-      <div>
+      <div style={wallpaper}>
         <Navbar />
         <div style={header}>
           <p>Account Settings</p>
