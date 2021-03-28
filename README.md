@@ -8,8 +8,8 @@
     <a href="https://github.com/SemihDurmus/FullStack_Blog_App_FrontEnd">
        Source Code
     </a> |
-        <a href="#">
-      Live Demo - Coming soon
+        <a href="https://fs-blog-frontend.herokuapp.com/">
+      Live on Heroku
     </a>
     
  
@@ -87,7 +87,6 @@ The packages/dependencies below should be installed prior to running the app.
     "dotenv": "^8.2.0",
     "emailjs-com": "^2.6.4",
     "formik": "^2.2.6",
-    "gh-pages": "^3.1.0",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
