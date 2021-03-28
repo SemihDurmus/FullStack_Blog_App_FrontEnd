@@ -5,7 +5,6 @@ import github from "../assets/github.png";
 import linkedin from "../assets/linkedin.png";
 import wallPaper from "../assets/webb.png";
 import { pageTitle } from "../styles/titles";
-// import "./About.css";
 
 //-----INLINE STYLES-----
 
@@ -83,9 +82,8 @@ export default function About() {
   return (
     <div
       style={{
-        height: "100vh",
+        minHeight: "100vh",
         backgroundImage: `url(${wallPaper})`,
-        backgroundRepeat: "repeat",
       }}
     >
       <Navbar />
