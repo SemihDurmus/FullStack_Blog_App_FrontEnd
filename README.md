@@ -53,7 +53,7 @@ This app comprises use of Web Socekts, Live Chat, Formik & Yup, CRUD operations,
 - There is another option on landing page: forgot password. If this option is selected the programs asks for an email address to send a reset password link. If the entered address is not assigned to any user, the email wil not be sent. After following the link in email, the user can create a new password.
 - On the home page user can see a search area, category selector and all the published posts as cards. Only 6 cards are shown per page, so to see more of the posts there is pagination.
 - Search area is for filtering the posts by titles by the entered keyword. The category selector is for filtering the posts by categories. It is possible to enter more than one category.
-- An unauthenticated user can only view the cards, but not more.
+- An unauthenticated user can only view Home, Contact and About pages, but not more.
 - An authenticated user can view his profile by clicking on the avatar on top-right.
 - Profile consists of an image and bio. Options on profile page are:
   - STATS: A modal to show the post statistics
@@ -70,6 +70,8 @@ This app comprises use of Web Socekts, Live Chat, Formik & Yup, CRUD operations,
 - If the current user is the owner of the post at te post detail page, two more options are displayed on the bottom: EDIT POST and DELETE POST.
 - The user can click on other users avatars to view their profiles. In this page there is user image, bio, user's stats modal, published posts and one more thing: LIVE CHAT
 - Live Chat is a modal box, where the current user has the option to send direct message to another user. Here a list of previous messages are also displayed.
+- On About Page the team members are displayed
+- On Contact Us Page users can send messages to the site admin. This page is built by using emailjs package.
 
 ## How To Use
 
@@ -82,6 +84,8 @@ The packages/dependencies below should be installed prior to running the app.
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "emailjs-com": "^2.6.4",
     "formik": "^2.2.6",
     "gh-pages": "^3.1.0",
     "moment": "^2.29.1",
@@ -95,7 +99,6 @@ The packages/dependencies below should be installed prior to running the app.
     "react-select": "^4.0.2",
     "web-vitals": "^0.2.4",
     "yup": "^0.32.8"
-
 ```
 
 ## Acknowledgements
