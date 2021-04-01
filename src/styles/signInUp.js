@@ -79,3 +79,26 @@ export const yellowLinksStyle = {
   fontSize: "15px",
   fontWeight: "bold",
 };
+
+export const loadingContainerStyle = {
+  position: "absolute",
+  width: "300px",
+  height: "200px",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%,-50%)",
+};
+
+export const loadingTextStyle = {
+  position: "absolute",
+  top: "70%",
+  left: "50%",
+  width: "300px",
+  backgroundColor: "#273c75",
+  padding: "1rem",
+  textAlign: "center",
+  transform: "translateX(-50%)",
+  color: "#fbc531",
+  borderRadius: "10px",
+  border: "2px solid #fbc531",
+};
