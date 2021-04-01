@@ -63,7 +63,7 @@ function MiniModal({ open, setOpen }) {
   const body = (
     <div style={minimodalStyle}>
       <div>
-        Password must be at least 6 characters, contain minimum one uppercase,
+        Password must be at least 8 characters, contain minimum one uppercase,
         one lowercase and one number!
       </div>
       <div>

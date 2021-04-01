@@ -15,6 +15,7 @@ import ForumRoundedIcon from "@material-ui/icons/ForumRounded";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import { squareButtonStyle } from "../../styles/smallElements";
 import { wideButtonStyle } from "../../styles/smallElements";
+import { wallpaper } from "../../styles/background.js";
 
 import { LoopCircleLoading } from "react-loadingg";
 
@@ -134,13 +135,7 @@ function UserDetail() {
       <LoopCircleLoading />
     </div>
   ) : (
-    <div
-      style={{
-        backgroundColor: "#f6f5f5",
-        width: "auto",
-        overflow: "hidden",
-      }}
-    >
+    <div style={wallpaper}>
       <Navbar />
       <Grid container className={classes.root} spacing={5} justify="center">
         <Grid item xs={12}>
