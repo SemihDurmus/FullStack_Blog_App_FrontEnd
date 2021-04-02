@@ -28,18 +28,34 @@
 
 ## Overview
 
-<img src="src/assets/gifs/1_register_sign_in" width="800">
-<img src="src/assets/home.png" width="800">
-<img src="src/assets/search.png" width="800">
-<img src="src/assets/profile_page.png" width="800">
-<img src="src/assets/comment.png" width="800">
-<img src="src/assets/forgot.png" width="800">
+<p align="center">Sign Up & Sign In</p>
+<p align="center"><img src="src/assets/gifs/1_register_sign_in.gif" width="700"></p>
+<p align="center">Create Profile</p>
+<p align="center"><img src="src/assets/gifs/2_create_profile.gif" width="700"></p>
+<p align="center">Create Post</p>
+<p align="center"><img src="src/assets/gifs/3_create_post.gif" width="700"></p>
+<p align="center">Search, Edit Post</p>
+<p align="center"><img src="src/assets/gifs/4_search.gif" width="700"></p>
+<p align="center">Like & Comment</p>
+<p align="center"><img src="src/assets/gifs/5_like_comment.gif" width="700"></p>
+<p align="center">Other Users' Profiles</p>
+<p align="center"><img src="src/assets/gifs/6_user_profile.gif" width="700"></p>
+<p align="center">Live Chat</p>
+<p align="center"><img src="src/assets/gifs/7_chat.gif" width="700"></p>
+<p align="center">Account Settings</p>
+<p align="center"><img src="src/assets/gifs/8_account_settings.gif" width="700"></p>
+<p align="center">About & Contact Pages</p>
+<p align="center"><img src="src/assets/gifs/9_about_contact.gif" width="700"></p>
+<p align="center">Forgot Password</p>
+<p align="center"><img src="src/assets/gifs/10_password_forget.gif" width="700"></p>
+<p align="center">Password Reset</p>
+<p align="center"><img src="src/assets/gifs/11_password_reset.gif" width="700"></p>
 
 ### Built With
 
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
-
 - [React](https://reactjs.org/)
+- [Django](https://www.djangoproject.com/)
+- [Material-UI](https://material-ui.com/)
 - Code Buddy : [Ramazan Aksu](https://github.com/raymondaksu)
 
 ## Features
@@ -66,7 +82,7 @@ This app comprises use of Web Socekts, Live Chat, Formik & Yup, CRUD operations,
 - Bottom of the post content comes the comments. A comment inholds commenter name, avatar, content and create date. If the current user on the page is the owner of the comment, he has the option to edit or delete his own comment. Once the comment is edited, the expression "edited" appears next o the edit date. The user can submit a comment using the text area on the bottom of the page.
 - If the current user is the owner of the post at te post detail page, two more options are displayed on the bottom: EDIT POST and DELETE POST.
 - The user can click on other users avatars to view their profiles. In this page there is user image, bio, user's stats modal, published posts and one more thing: LIVE CHAT
-- Live Chat is a modal box, where the current user has the option to send direct message to another user. Here a list of previous messages are also displayed.
+- 🔥 Live Chat is a modal box, where the current user has the option to send and receive direct messages to/from another user. Here previous messages are also displayed.
 - On About Page the team members are displayed
 - On Contact Us Page users can send messages to the site admin. This page is built by using emailjs package.
 
@@ -106,5 +122,6 @@ The packages/dependencies below should be installed prior to running the app.
 
 ## Contact
 
-- GitHub [SemihDurmus](https://github.com/SemihDurmus)
-- Linkedin [@Semih Durmus](https://www.linkedin.com/in/semih-durmus-0548751b7/)
+- [GitHub](https://github.com/SemihDurmus)
+- [LinkedIn](https://www.linkedin.com/in/semih-durmus-0548751b7/)
+- [Medium](https://semihdurmus.medium.com/)
