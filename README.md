@@ -2,9 +2,6 @@
 
 <div align="center">
   <h3 align="center">
-    <a href="https://github.com/SemihDurmus/Fullstack_Blog_App_Frontend_prev.git">
-       Previous Commits
-    </a> |
     <a href="https://github.com/SemihDurmus/FullStack_Blog_App_FrontEnd">
        Source Code
     </a> |
@@ -31,7 +28,7 @@
 
 ## Overview
 
-<img src="src/assets/landing.png" width="800">
+<img src="src/assets/gifs/1_register_sign_in" width="800">
 <img src="src/assets/home.png" width="800">
 <img src="src/assets/search.png" width="800">
 <img src="src/assets/profile_page.png" width="800">
