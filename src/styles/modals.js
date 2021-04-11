@@ -1,5 +1,5 @@
 export const profileModalContainerStyle = {
-  minWidth: "300px",
+  maxWidth: "300px",
   width: "650px",
   minHeight: "550px",
   position: "absolute",
