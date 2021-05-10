@@ -27,7 +27,6 @@
     "web-vitals": "^0.2.4",
     "yup": "^0.32.8"
   },
-  
   "scripts": {
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
